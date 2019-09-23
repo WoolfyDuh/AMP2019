@@ -11,6 +11,7 @@ let point = new Point(new Vector2d(300,400),20,'yellow','1',true);
 
 function animate(){
     requestAnimationFrame(animate);
+    ctx.clearRect(0,0,cvs.width,cvs.height);
     point.draw;
 }
 animate();

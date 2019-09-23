@@ -43,12 +43,12 @@ window.addEventListener('click', (evt) => {
 })
 
 function animate() {
-    context.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
     requestAnimationFrame(animate);
 
 
     for (let i = 0; i < points.length; i++) {
-        points[i].draw(context);
+        points[i].draw(ctx);
     }
 }
 
