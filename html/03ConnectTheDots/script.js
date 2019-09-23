@@ -6,15 +6,20 @@ const height = window.innerHeight;
 
 cvs.width = width;
 cvs.height = height;
+let dots = [];
 
-let point = new Point(new Vector2d(300,400),20,'yellow','1',true);
-
+let point1 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),20,'yellow','1',false);
+let point2 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),15,'green','2',false);
+dots.push(point1);
+dots.push(point2);
+console.log(dots);
 function animate(){
     requestAnimationFrame(animate);
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    point.draw(ctx);
+    point1.draw(ctx);
+    point2.draw(ctx);
 }
 animate();
+
 function rng(max) {
     let ans = Math.floor(Math.random() * max);
     return ans;
