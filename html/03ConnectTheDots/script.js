@@ -10,6 +10,7 @@ let dots = [];
 
 let point1 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),20,'yellow','1',false);
 let point2 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),15,'green','2',false);
+
 dots.push(point1);
 dots.push(point2);
 console.log(dots);
