@@ -11,12 +11,8 @@ cvs.height = height;
 let f = new LinearFunction(1,1);
 
 
-let A = new Point(new Vector2d(200, 200), 20, "cyan","1",true);
-let B = new Point(new Vector2d(500, 300), 20, "honeydew","2",true);
-
-
-
-
+let A = new Point(new Vector2d(200, 200), 20, "cyan","uwu",true);
+let B = new Point(new Vector2d(500, 300), 20, "honeydew","owo",true);
 
 
 function animate(){
@@ -28,5 +24,6 @@ ctx.clearRect(0,0,cvs.width,cvs.height);
     for (let x = 0; x < width; x += 10) {
         let point = new Point(new Vector2d(x, f.y(x)), 10, "pink");
         point.draw(ctx);
+    }
 }
-}
+animate();

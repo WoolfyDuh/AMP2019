@@ -6,22 +6,42 @@ const height = window.innerHeight;
 
 cvs.width = width;
 cvs.height = height;
+
 let dots = [];
 
-let point1 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),20,'yellow','1',false);
-let point2 = new Point(new Vector2d(rng(cvs.width),rng(cvs.height)),15,'green','2',false);
 
-dots.push(point1);
-dots.push(point2);
-console.log(dots);
-function animate(){
-    requestAnimationFrame(animate);
-    point1.draw(ctx);
-    point2.draw(ctx);
-}
-animate();
 
 function rng(max) {
-    let ans = Math.floor(Math.random() * max);
-    return ans;
+    return Math.floor(Math.random() * max)
 }
+
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, width, height);
+    if (dots.length < 4) {
+        let dot = new Point(new Vector2d(rng(width), rng(height)), 10,"#42f5bf");
+        dots.push(dot);
+    }
+    ctx.beginPath();
+    ctx.moveTo(dots[0].position.dx, dots[0].position.dy);
+
+    for (let i = 0; i < dots.length; i++) {
+        ctx.lineTo(dots[i].position.dx, dots[i].position.dy);
+        ctx.lineWidth = 5;
+        ctx.fillStyle = "#f2ff00";
+        ctx.strokeStyle = "#4bf542";
+    }
+
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].draw(ctx);
+        dots[i].label = i + 1;
+
+    }
+
+}
+
+animate();
