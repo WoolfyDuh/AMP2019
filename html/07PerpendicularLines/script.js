@@ -21,8 +21,8 @@ requestAnimationFrame(animate);
 ctx.clearRect(0, 0, cvs.width, cvs.height);
 L.defineLineWithTwoPoints(A, B);
 
- M.slope = - 1 / L.slope;
- M.intercept = D.position.dy - M.slope * D .position.dx;
+ M.slope = - 1 / L.slope; //
+ M.intercept = D.position.dy - M.slope * D .position.dx;//
 A.draw(ctx);
 B.draw(ctx);
 C.draw(ctx);
