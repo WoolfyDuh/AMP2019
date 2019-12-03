@@ -29,20 +29,13 @@ function Animate(){
     C.pos.draw(ctx, new Vector2d(0, 0), 1, "white");
     B.position.draw(ctx, new Vector2d(0, 0), 1, "white");
 
-    if(C.radius.pos = B.radius.position+5){
-        BCheck = false
+    if(C.vel.magnitude <= 0.3 ){
+        BCheck = !BCheck;
+        console.log("SWITCHI");
     }
-    // else{
-    //     BCheck = true;
-    // }
 
-    if (C.radius.pos = A.radius.position+5 || BCheck == false) {
-        BCheck = true
-    }
-    // else {
-    //     BCheck = false;
-    // }
-    
+
+    console.log(C.vel.magnitude);
 
 
     if  (BCheck){
