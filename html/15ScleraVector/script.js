@@ -15,7 +15,6 @@ let B = new Point(new Vector2d(500,600),20,"red","B",true);
 
 let C = new DPoint(new Vector2d(200,300),new Vector2d(0,0), new Vector2d(0,0),15,"Lime","C");
 
-let D = new Point(new Vector2d(0,0),23,)
 //let F = new LinearFunction(1,1);
 
 
@@ -25,14 +24,26 @@ function Animate(){
     drawLineAB();
     A.draw(ctx);
     B.draw(ctx);
-    
     C.draw(ctx);
+
     C.pos.draw(ctx, new Vector2d(0, 0), 1, "white");
     B.position.draw(ctx, new Vector2d(0, 0), 1, "white");
 
-    //  if(C.radius <= B.radius + 5 || BCheck === true){
+    if(C.radius.pos = B.radius.position+5){
+        BCheck = false
+    }
+    // else{
+    //     BCheck = true;
+    // }
+
+    if (C.radius.pos = A.radius.position+5 || BCheck == false) {
+        BCheck = true
+    }
+    // else {
     //     BCheck = false;
+    // }
     
+
 
     if  (BCheck){
     C.vel.differenceVector(B.position,C.pos);
