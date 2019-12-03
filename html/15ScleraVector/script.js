@@ -35,7 +35,6 @@ function Animate(){
     }
 
 
-    console.log(C.vel.magnitude);
 
 
     if  (BCheck){
