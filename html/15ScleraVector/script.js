@@ -8,10 +8,14 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
+let BCheck = true;
+
 let A = new Point(new Vector2d(200,300),20,"green","A",true);
 let B = new Point(new Vector2d(500,600),20,"red","B",true);
 
 let C = new DPoint(new Vector2d(200,300),new Vector2d(0,0), new Vector2d(0,0),15,"Lime","C");
+
+let D = new Point(new Vector2d(0,0),23,)
 //let F = new LinearFunction(1,1);
 
 
@@ -25,10 +29,20 @@ function Animate(){
     C.draw(ctx);
     C.pos.draw(ctx, new Vector2d(0, 0), 1, "white");
     B.position.draw(ctx, new Vector2d(0, 0), 1, "white");
-  
 
+    //  if(C.radius <= B.radius + 5 || BCheck === true){
+    //     BCheck = false;
+    
+
+    if  (BCheck){
     C.vel.differenceVector(B.position,C.pos);
-    C.vel.scalMul(0,01);
+    C.vel.scalMul(0.01);
+    }
+    if(!BCheck){
+    C.vel.differenceVector(A.position,C.pos);
+    C.vel.scalMul(0.01);
+    }
+
     C.update();
     C.vel.draw(ctx,C.pos,10, "White");
     // F.defineLineWithTwoPoints(A, B)
