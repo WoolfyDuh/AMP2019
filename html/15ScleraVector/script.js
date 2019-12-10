@@ -34,8 +34,6 @@ function Animate(){
     }
 
 
-
-
     if  (BCheck){
     C.vel.differenceVector(B.position,C.pos);
     C.vel.scalMul(0.01);

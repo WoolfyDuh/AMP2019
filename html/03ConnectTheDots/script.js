@@ -39,7 +39,6 @@ function animate() {
     for (let i = 0; i < dots.length; i++) {
         dots[i].draw(ctx);
         dots[i].label = i + 1;
-
     }
 
 }
