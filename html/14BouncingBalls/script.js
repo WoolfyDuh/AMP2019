@@ -17,7 +17,7 @@ function animate() {
     A.update();
     A.draw(ctx)
     A.vel.draw(ctx, A.pos, "#00ffe4", 5);
-    if(wooo.length < 100){
+    if(wooo.length < 200){
         let wot = new DPoint(new Vector2d(rng(500), 200), new Vector2d(5, 4), new Vector2d(0, 1), 15, "hotpink");
         wooo.push(wot);
     }
