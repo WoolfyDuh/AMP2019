@@ -11,6 +11,16 @@ canvas.height = height;
 let C = new DPoint(new Vector2d(200, 300), new Vector2d(0, 0), new Vector2d(0, 0), 15, "Lime", "C");
 let waypoints = [];
 let index = 0;
+
+//array of Dpoints
+let followers = [];
+let FINdex = 0;
+
+//make Dpoints and push them into followers
+for(i = 0; i < 5; i++){
+    let follower = new DPoint(new Vector2d(200,300), new Vector2d(0,0), new Vector2d(0,0), 12, "HotPink","");
+    followers.push(follower);
+}
 //maak 5 waypoints en stop ze in een array
 for (let i = 0; i < 5; i++) {
     let waypoint = new Point(new Vector2d(rng(cvs.width), rng(cvs.height)), 15, "white", "", true);
@@ -40,9 +50,15 @@ function Animate() {
         waypoints[i].draw(ctx);
         waypoints[i].label = i ;
     }
+    //draw followers
+    for (let i = 0; i < 5; i++){
+        followers[i].draw(ctx);
+        followers[i].label = i;
+       
+    }
 //loop C in de waypoints array
     C.vel.differenceVector(waypoints[index].position, C.pos);
-    console.log(C.vel.magnitude);
+    
     if (C.vel.magnitude < 2) {
         index += 1;
     }
@@ -51,6 +67,16 @@ function Animate() {
     }
     C.vel.scalMul(0.01);
     C.update();
+//loop Follower array in the waypoints array
+    for(i = 0; i < followers.length; i++){
+    followers[i].differenceVector(waypoints[FINdex].position, followers[i].pos);
+    if(followers[i].vel.magnitude < 2){
+        FINdex += 1;
+    }
+    if (FINdex >= waypoints.length) {
+        FINdex = 0;
+    }
+    }
     //that's it
 }
 Animate();
