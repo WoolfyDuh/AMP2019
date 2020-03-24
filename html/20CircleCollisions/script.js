@@ -7,7 +7,7 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-let A = new Point(new Vector2d(canvas.width/2,canvas.height/2), 125, "white", "A", false );
+let A = new Point(new Vector2d(canvas.width/2,canvas.height/2), 300, "white", "A", false );
 let B = new DPoint(new Vector2d(1000,150), new Vector2d(4,5), new Vector2d(0,0), 15, "cyan", "B");
 
  B.tan = new Vector2d(1,1);
@@ -25,11 +25,11 @@ function Animate() {
     B.rad.dy = A.position.dy - B.pos.dy;
 
     distance = B.rad.magnitude;
-    B.rad.magnitude = 5;
+    B.rad.magnitude = 1;
 
-    B.tan.dx = -B.rad.dx;
-    B.tan.dy = B.rad.dy;
-    B.tan.magnitude = 5;
+    B.tan.dx = -B.rad.dy;
+    B.tan.dy = B.rad.dx;
+    B.tan.magnitude = 1;
 
     B.rad.magnitude = B.rad.dot(B.vel);
     B.tan.magnitude = B.tan.dot(B.vel);
@@ -42,9 +42,9 @@ function Animate() {
     A.draw(ctx);
     B.draw(ctx);
 
-    B.rad.draw(ctx, B.pos, "red", 5);
-    B.tan.draw(ctx, B.pos, "blue", 5);
-    B.vel.draw(ctx, B.pos, "lime", 15);
+    B.rad.draw(ctx, B.pos, "red", 10);
+    B.tan.draw(ctx, B.pos, "blue", 15);
+    B.vel.draw(ctx, B.pos, "lime", 25);
 }
 Animate();
 
