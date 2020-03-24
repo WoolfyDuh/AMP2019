@@ -7,34 +7,36 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-//maak een int, array & DPoint
-let C = new DPoint(new Vector2d(200, 300), new Vector2d(0, 0), new Vector2d(0, 0), 15, "Lime", "C");
+//declare a Point, DPoint & Int array
 let waypoints = [];
-let index = 0;
-
-//array of Dpoints
 let followers = [];
-let FINdex = 0;
+let indexA = [];
 
-//make Dpoints and push them into followers
-for(i = 0; i < 5; i++){
-    let follower = new DPoint(new Vector2d(200,300), new Vector2d(0,0), new Vector2d(0,0), 12, "HotPink","");
-    followers.push(follower);
-}
-//maak 5 waypoints en stop ze in een array
+
+
+//make 5 Points and push them into waypoints
 for (let i = 0; i < 5; i++) {
     let waypoint = new Point(new Vector2d(rng(cvs.width), rng(cvs.height)), 15, "white", "", true);
     waypoints.push(waypoint);
 }
+//make DPoints and push them into followers
+for (i = 0; i < waypoints.length; i++) {
+    let follower = new DPoint(new Vector2d(rng(cvs.width), rng(cvs.height)), new Vector2d(0, 0), new Vector2d(0, 0), 12, "HotPink", "");
+    followers.push(follower);
+}
+// make an array of Ints
+for (i = 0; i < followers.length; i++) {
+    let FINdex = i;
+    indexA.push(FINdex);
+}
+
+
 
 function Animate() {
-    requestAnimationFrame(Animate);
+   requestAnimationFrame(Animate);
     ctx.clearRect(0, 0, cvs.width, cvs.height);
-    C.draw(ctx);
-    C.pos.draw(ctx, new Vector2d(0, 0), 1, "white");
-    C.vel.draw(ctx, C.pos, 10, "White");
 
-    //drawLineAB maar het loopt door de array
+    //visualize waypoints path
     ctx.beginPath();
     ctx.strokeStyle = "AliceBlue";
     ctx.setLineDash([5, 15]);
@@ -46,7 +48,7 @@ function Animate() {
     ctx.stroke();
     ctx.setLineDash([0]);
     //draw waypoints
-    for (let i = 0; i < waypoints.length - 1; i++) {
+    for (let i = 0; i < waypoints.length; i++) {
         waypoints[i].draw(ctx);
         waypoints[i].label = i ;
     }
@@ -56,26 +58,21 @@ function Animate() {
         followers[i].label = i;
        
     }
-//loop C in de waypoints array
-    C.vel.differenceVector(waypoints[index].position, C.pos);
-    
-    if (C.vel.magnitude < 2) {
-        index += 1;
-    }
-    if(index >= waypoints.length){
-        index = 0;
-    }
-    C.vel.scalMul(0.01);
-    C.update();
 //loop Follower array in the waypoints array
     for(i = 0; i < followers.length; i++){
-    followers[i].differenceVector(waypoints[FINdex].position, followers[i].pos);
+        followers[i].vel.differenceVector(waypoints[indexA[i]].position, followers[i].pos);
+   
+
     if(followers[i].vel.magnitude < 2){
-        FINdex += 1;
+      indexA[i] += 1;
     }
-    if (FINdex >= waypoints.length) {
-        FINdex = 0;
+    if (indexA[i] >= waypoints.length) {
+        indexA[i] = 0;
     }
+
+        followers[i].vel.scalMul(0.01);
+        followers[i].update();
+ 
     }
     //that's it
 }

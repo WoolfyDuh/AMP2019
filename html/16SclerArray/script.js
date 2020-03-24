@@ -42,7 +42,6 @@ function Animate() {
     }
 //loop C in de waypoints array
     C.vel.differenceVector(waypoints[index].position, C.pos);
-    console.log(C.vel.magnitude);
     if (C.vel.magnitude < 2) {
         index += 1;
     }
