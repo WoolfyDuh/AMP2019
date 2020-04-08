@@ -44,13 +44,6 @@ function Animate(){
     B.rad.magnitude = B.rad.dot(B.vel);
     B.tan.magnitude = B.tan.dot(B.vel);
 
-    B.rad.draw(ctx, B.pos, "red", 30);
-    A.rad.draw(ctx, A.pos, "red", 30);
-    B.tan.draw(ctx, B.pos, "blue", 30);
-    A.tan.draw(ctx, A.pos, "blue", 30);
-    B.vel.draw(ctx,B.pos,"pink",30);
-    A.vel.draw(ctx,A.pos,"pink",30);
-
     if(distance < B.radius + A.radius){
         collide();
     }

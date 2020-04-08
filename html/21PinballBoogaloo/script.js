@@ -22,7 +22,7 @@ function Animate() {
         let distance = new Vector2d(1,1);
         distance.differenceVector(ball.position,B.pos);
         if(distance.magnitude < B.radius + ball.radius){
-            ball.color = "green";
+            ball.color = "hotpink";
             B.rad.dx = distance.dx;
             B.rad.dy = distance.dy;
 
@@ -35,6 +35,9 @@ function Animate() {
             B.rad.magnitude = B.rad.dot(B.vel);
             B.tan.magnitude = B.tan.dot(B.vel);
 
+            B.rad.draw(ctx, B.pos, "red", 50);
+            B.tan.draw(ctx, B.pos, "blue", 50); 
+
             collide();
         
         }
@@ -43,15 +46,13 @@ function Animate() {
         }
         ball.draw(ctx);
     });
+
     B.update();
-
-
     B.draw(ctx);
 
 }
 Animate();
 
-//random function cause why not
 function rng(max) {
     return Math.floor(Math.random() * max)
 }
