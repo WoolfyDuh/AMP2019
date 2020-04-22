@@ -93,5 +93,6 @@ function drawEverything(){
     B.rad.draw(ctx, B.pos, "red", 40);
 
     A.tan.draw(ctx, A.pos, "green", 20);
-    B.tan.draw(ctx, B.pos, "green", 20);   
+    B.tan.draw(ctx, B.pos, "green", 20);  
+    //boop 
 }
