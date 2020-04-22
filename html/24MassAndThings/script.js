@@ -9,8 +9,8 @@ canvas.height = height;
 
 let A, B, diff;
 
-A = new DPoint(new Vector2d(0,0), new Vector2d(1,2), new Vector2d(0,0), 20, "lime", "A");
-B = new DPoint(new Vector2d(500,500), new Vector2d(-1,-2), new Vector2d(0,0), 100, "hotpink", "B");
+A = new DPoint(new Vector2d(0,0), new Vector2d(6,7), new Vector2d(0,0), 20, "lime", "A");
+B = new DPoint(new Vector2d(500,500), new Vector2d(-6,-7), new Vector2d(0,0), 100, "hotpink", "B");
 
 A.mass = A.radius * A.radius;
 B.mass = B.radius * B.radius;
@@ -52,17 +52,8 @@ function Animate(){
     B.tan.magnitude = B.tan.dot(B.vel);
     diff.differenceVector(B.pos, A.pos);
     
-    A.draw(ctx);
-    B.draw(ctx);
-    A.vel.draw(ctx, A.pos, "hotpink", 40);
-    B.vel.draw(ctx, B.pos, "lime", 40);    
-
-    A.rad.draw(ctx, A.pos, "red", 40);
-    B.rad.draw(ctx, B.pos, "red", 40);   
-
-    A.tan.draw(ctx, A.pos, "green", 20);
-    B.tan.draw(ctx, B.pos, "green", 20);   
-
+    
+    drawEverything();
     if(diff.magnitude < A.radius + B.radius){
         Msum = A.mass + B.mass;
         MAB = A.mass - B.mass;
@@ -73,10 +64,6 @@ function Animate(){
         R = new Vector2d(0,0);
         S = new Vector2d(0,0);
 
-        // P = MAB / Msum * A.rad;
-        // Q = 2 * B.mass / Msum * B.rad;
-        // R = 2 * A.mass / Msum * A.rad;
-        // S = MBA / Msum * B.rad
         P.equals(A.rad);
         Q.equals(B.rad);
         R.equals(A.rad);
@@ -94,9 +81,18 @@ function Animate(){
         B.vel.sumVector(B.rad, B.tan);
 
         }
-    else{
-       // diff.draw(ctx, A.pos,"blue",10);   
-    }
 }
 
 Animate();
+function drawEverything(){
+    A.draw(ctx);
+    B.draw(ctx);
+    A.vel.draw(ctx, A.pos, "hotpink", 40);
+    B.vel.draw(ctx, B.pos, "lime", 40);
+
+    A.rad.draw(ctx, A.pos, "red", 40);
+    B.rad.draw(ctx, B.pos, "red", 40);
+
+    A.tan.draw(ctx, A.pos, "green", 20);
+    B.tan.draw(ctx, B.pos, "green", 20);   
+}
