@@ -9,8 +9,8 @@ canvas.height = height;
 
 let A, B, diff;
 
-A = new DPoint(new Vector2d(0,0), new Vector2d(6,7), new Vector2d(0,0), 20, "lime", "A");
-B = new DPoint(new Vector2d(500,500), new Vector2d(-6,-7), new Vector2d(0,0), 100, "hotpink", "B");
+A = new DPoint(new Vector2d(0,0), new Vector2d(2,3), new Vector2d(0,0), 20, "lime", "A");
+B = new DPoint(new Vector2d(500,500), new Vector2d(-2,-3), new Vector2d(0,0), 100, "hotpink", "B");
 
 A.mass = A.radius * A.radius;
 B.mass = B.radius * B.radius;
@@ -31,7 +31,6 @@ function Animate(){
     ctx.clearRect(0,0, cvs.width, cvs.height);
     A.update();
     B.update();
-
 
     A.rad.differenceVector(B.pos, A.pos);
     A.tan.perpendicular(B.rad);
