@@ -38,8 +38,8 @@ function Animate(){
     A.rad.normalized();
     A.tan.normalized();
 
-    A.rad.magnitude = B.rad.dot(B.vel);
-    A.tan.magnitude = B.tan.dot(B.vel);
+    A.rad.magnitude = A.rad.dot(B.vel);
+    A.tan.magnitude = A.tan.dot(B.vel);
 
     B.rad.differenceVector(A.pos, B.pos);
     B.tan.perpendicular(A.rad);
